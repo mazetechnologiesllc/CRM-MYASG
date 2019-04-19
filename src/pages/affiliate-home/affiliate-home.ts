@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,11 +8,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AffiliateHomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public events:Events) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AffiliateHomePage');
+  }
+
+  openPage(name:string){
+   // this.navCtrl.push(name);
+    this.events.publish('openPage', name)
   }
 
 }

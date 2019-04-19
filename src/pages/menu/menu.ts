@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Nav } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Nav, Events } from 'ionic-angular';
 
 // Models
 import { AppUser } from '../../_models';
@@ -59,6 +59,7 @@ export class MenuPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public events:Events,
     public authProvider: AuthenticationProvider,
     public localStorageProvider: LocalStorageProvider
   ) {
@@ -250,6 +251,10 @@ export class MenuPage implements OnInit {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
+    this.events.subscribe('openPage',(page)=>{
+      console.log(this.pages)
+        this.openPage(page, page.title)
+    })
   }
 
   // Custom Methods

@@ -20,42 +20,88 @@
         <h6 ion-text>Dashboard</h6>
       </ion-col>
 
-      <ion-col col-4 text-center>
-        <button ion-button class="circular-button" color="primary">
+      <!-- <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary" 
+        (click)="openPage({color:'appDark','component':'ListLeadPage','icon':'people','iconColor':'appSuccess','pageName':'ListLeadPage','title':'Show all Leads'})">
           <i class="fa fa-list" aria-hidden="true"></i>
         </button>
         <h6 ion-text>Leads</h6>
-      </ion-col>
+      </ion-col> -->
 
-      <ion-col col-4 text-center>
-        <button ion-button class="circular-button" color="primary">
-          <i class="fa fa-area-chart" aria-hidden="true"></i>
-        </button>
-        <h6 ion-text>Reports</h6>
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
       <ion-col col-4 text-center>
         <button ion-button class="circular-button" color="primary">
           <i class="fa fa-calendar" aria-hidden="true"></i>
         </button>
         <h6 ion-text>Calender</h6>
       </ion-col>
+      <!-- <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary">
+          <i class="fa fa-area-chart" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Reports</h6>
+      </ion-col> -->
 
+      <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({color:'appDark','component':'ListManagerPage','icon':'people','iconColor':'appSuccess','pageName':'ListManagerPage','title':'Show all Manager'})">
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Manager</h6>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <!-- 
       <ion-col col-4 text-center>
         <button ion-button class="circular-button" color="primary">
           <i class="fa fa-users" aria-hidden="true"></i>
         </button>
         <h6 ion-text>My Team</h6>
-      </ion-col>
+      </ion-col> -->
 
-      <ion-col col-4 text-center>
+      <!-- <ion-col col-4 text-center>
         <button ion-button class="circular-button" color="primary">
           <i class="fa fa-briefcase" aria-hidden="true"></i>
         </button>
         <h6 ion-text>My Sales</h6>
+      </ion-col> -->
+
+   
+      <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({color:'appDark','component':'ListWebLeadPage','icon':'list','iconColor':'appSuccess','pageName':'ListWebLeadPage','title':'Show all Web Leads'})">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Web Leads</h6>
       </ion-col>
+
+      <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({color:'appDark','component':'ListAffiliatePage','icon':'people','iconColor':'appSuccess','pageName':'ListAffiliatePage','title':'Show all Affiliate'})">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Affiliate</h6>
+      </ion-col>
+
+      <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({color:'appDark','component':'ListClientPage','icon':'people','iconColor':'appSuccess','pageName':'ListClientPage','title':'Show all Client'})">
+          <i class="fa fa-globe" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Client</h6>
+      </ion-col>
+
+      <ion-col col-4 text-center>
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({color:'appDark','component':'ListLeadPage','icon':'people','iconColor':'appSuccess','pageName':'ListLeadPage','title':'Show all Leads'})">
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+        </button>
+        <h6 ion-text>Leads</h6>
+      </ion-col>
+
+
     </ion-row>
   </ion-grid>
 
