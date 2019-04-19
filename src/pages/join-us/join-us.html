@@ -273,19 +273,19 @@
           <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
         </ion-item>
 
-        <ion-item [class.invalid]="!paymentInfoForm.controls.addLine1.valid && paymentInfoForm.controls.addLine1.dirty">
+        <ion-item [class.invalid]="!paymentInfoForm.controls.paymentAddLine1.valid && paymentInfoForm.controls.paymentAddLine1.dirty">
           <ion-label stacked>Address 1 <span class="mandatory-field">*</span></ion-label>
-          <ion-textarea formControlName="addLine1"></ion-textarea>
+          <ion-textarea formControlName="paymentAddLine1"></ion-textarea>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Address 2</ion-label>
-          <ion-textarea formControlName="addLine2"></ion-textarea>
+          <ion-textarea formControlName="paymentAddLine2"></ion-textarea>
         </ion-item>
 
-        <ion-item [class.invalid]="!paymentInfoForm.controls.zip.valid && paymentInfoForm.controls.zip.dirty">
+        <ion-item [class.invalid]="!paymentInfoForm.controls.paymentZip.valid && paymentInfoForm.controls.paymentZip.dirty">
           <ion-label stacked>Zip <span class="mandatory-field">*</span></ion-label>
-          <ion-input type="text" formControlName="zip" placeholder="eg. 99999"
+          <ion-input type="text" formControlName="paymentZip" placeholder="eg. 99999"
             [brmasker]="{mask:'00000', len:5, type:'number'}"></ion-input>
         </ion-item>
 

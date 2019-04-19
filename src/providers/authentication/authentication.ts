@@ -57,7 +57,7 @@ export class AuthenticationProvider {
       + '&addb2=' + signUpModel.paymentAddLine2
       + '&azip=' + signUpModel.paymentZip
       + '&createdby=162'
-      + 'user_id=162'
+      + '&user_id=162'
       + '&mode=create';
 
     return this._http.post(url, null);

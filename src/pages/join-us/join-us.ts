@@ -93,9 +93,9 @@ export class JoinUsPage implements OnInit {
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      addLine1: ['', Validators.required],
-      addLine2: [''],
-      zip: ['', [Validators.required, Validators.pattern(/^[0-9]{5}/)]],
+      paymentAddLine1: ['', Validators.required],
+      paymentAddLine2: [''],
+      paymentZip: ['', [Validators.required, Validators.pattern(/^[0-9]{5}/)]],
     });
 
     // this.slideOneForm = formBuilder.group({
@@ -122,6 +122,7 @@ export class JoinUsPage implements OnInit {
       this.personalInfoForm.controls['services'].setValue(params.id);
       this.personalInfoForm.controls['userType'].setValue('client');
       this.onUserTypeChange();
+      this.calculateJoiningFee('client',params.service_price!==null ? Number(params.service_price):0)
     }
   }
 
@@ -294,7 +295,7 @@ export class JoinUsPage implements OnInit {
     toast.present();
   }
 
-  calculateJoiningFee(userType: string): void {
+  calculateJoiningFee(userType: string, serviceAmount:number=0): void {
 
     if (userType === 'company') {
       this.signUpModel.userType = 7;
@@ -316,7 +317,7 @@ export class JoinUsPage implements OnInit {
       this.signUpAmount = 0;
       this.monthlyFee = 0;
     }
-    this.totalAmount = this.signUpAmount + this.monthlyFee;
+    this.totalAmount = this.signUpAmount + this.monthlyFee + serviceAmount;
   }
 
   setOnUserTypeChangeVariablesAndValidators(userType: string): void {
