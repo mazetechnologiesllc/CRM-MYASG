@@ -1,0 +1,39 @@
+<ion-content padding>
+  <img style="margin-top: 20px; margin-left: 30px; width: 80%;" src="../../assets/imgs/logo.png" />
+  <h1 style="color:#CCCCCC; text-align: center">Login Form</h1>
+
+  <ion-card>
+    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+      <div *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</div>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon ios="ios-person" md="md-person"></ion-icon>
+          <span style="color:#CCCCCC;">Email</span>
+        </ion-label>
+        <ion-input type="text" name="username" required [(ngModel)]="credentials.username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>
+          <ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
+          <span style="color:#CCCCCC;">Password</span>
+        </ion-label>
+        <ion-input type="password" name="password" required [(ngModel)]="credentials.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button color="appPrimary" full type="submit" [disabled]="!loginForm.form.valid">Login</button>
+      </ion-item>
+      <ion-item>
+        <button ion-button color="appWarning" full type="button" (click)="cancelLogin()">Cancel</button>
+      </ion-item>
+    </form>
+
+  </ion-card>
+
+  <p style="color:#ffffff; text-align: center">JOIN THE NETWORK</p>
+
+</ion-content>
+<ion-footer>
+  <p style="color:#CCCCCC; text-align: center">© 2012-2019 All rights reserved.</p>
+</ion-footer>

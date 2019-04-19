@@ -1,0 +1,150 @@
+<ion-content class="pageContent">
+
+  <ion-card style="color:#000000;">
+
+    <ion-item text-center>
+      <div style="font-size: 50px; padding: 5px;">
+        <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+      </div>
+      <h1>Manager</h1>
+      <h2 *ngIf="loggedInUser"><b>{{ loggedInUser.email }}</b></h2>
+    </ion-item>
+
+    <ion-item text-wrap style="background-color: #1CAF9A;">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-8 style="font-size: 16px; text-align: center;">
+            <b>Name</b>
+          </ion-col>
+          <ion-col col-4 style="font-size: 16px; text-align: center; color: #051080;">
+            <b>Status</b>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-8 style="font-size: 12px; text-align: center;">
+            <span *ngIf='loggedInUser'>{{ loggedInUserName | uppercase }}</span>
+          </ion-col>
+          <ion-col col-4 style="font-size: 12px; text-align: center; color: #051080;">
+            MANAGER
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-6>
+
+        <ion-card>
+          <ion-item style="background-color: #17A2B8; color: #ffffff;">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-3>
+                  <div style="font-size: 20px; margin-top: 12px;">
+                    <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col col-9 (click)="viewLeadList()" style=" cursor: pointer;">
+                  <div style="font-size: 10px;">MY LEADS</div>
+                  <div style="font-size: 18px; padding: 5px, 0;">{{loggedInUser.leadAssigned}}</div>
+                  <div style="font-size: 10px;">Lead Generated till now</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-card>
+
+      </ion-col>
+      <ion-col col-6>
+
+        <ion-card>
+          <ion-item style="background-color: #6F42C1; color: #ffffff;">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-3>
+                  <div style="font-size: 20px; margin-top: 12px;">
+                    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col col-9>
+                  <div style="font-size: 10px;">MESSAGE</div>
+                  <div style="font-size: 18px; padding: 5px, 0;">0</div>
+                  <div style="font-size: 10px;">In Inbox</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+
+        <ion-card>
+          <ion-item style="background-color: #1CAF9A; color: #ffffff;">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-3>
+                  <div style="font-size: 20px; margin-top: 12px;">
+                    <ion-icon ios="ios-list" md="md-list"></ion-icon>
+                  </div>
+                </ion-col>
+                <ion-col col-9 (click)="viewAffiliateList()" style=" cursor: pointer;">
+                  <div style="font-size: 10px;">MY AFFILIATES</div>
+                  <div style="font-size: 18px; padding: 5px, 0;">2</div>
+                  <div style="font-size: 10px;">Working for me</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-card>
+
+      </ion-col>
+      <ion-col col-6>
+
+        <ion-card>
+          <ion-item style="background-color: #0866C6; color: #ffffff;">
+            <ion-grid no-padding>
+              <ion-row>
+                <ion-col col-3>
+                  <div style="font-size: 22px; margin-top: 12px;">
+                    $
+                  </div>
+                </ion-col>
+                <ion-col col-9>
+                  <div style="font-size: 10px;">TOTAL EARN</div>
+                  <div style="font-size: 18px; padding: 5px, 0;">$ 0</div>
+                  <div style="font-size: 10px;">In my wallet</div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Charts -->
+
+  <ion-card>
+    <ion-card-header>
+      <div text-center style="font-size: 14px; font-weight: bold;">HOW ENGAGED OUR USERS WEEKLY</div>
+      <div text-center style="font-size: 14px;">Current 30 Days Leads details</div>
+    </ion-card-header>
+    <canvas #barCanvas></canvas>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <div text-center style="font-size: 14px; font-weight: bold;">REVENEW OUR USERS WEEKLY EARNED</div>
+      <div text-center style="font-size: 14px;">Current 30 Days Revenew details</div>
+    </ion-card-header>
+    <canvas #lineCanvas></canvas>
+  </ion-card>
+
+</ion-content>

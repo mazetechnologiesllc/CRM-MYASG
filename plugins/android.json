@@ -1,0 +1,37 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "maze.bizzapp"
+    }
+  },
+  "dependent_plugins": {}
+}

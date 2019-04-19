@@ -1,0 +1,42 @@
+page-profile {
+
+    .item-inner {
+        margin: 5px 20px 5px 5px;
+        border-bottom: 1px solid #2B88D8;
+        border-radius: 10px;
+    }
+
+    .button-overlay {
+        position: absolute;
+        top: 65%;
+        left: 38%;
+        border: none;
+        border-radius: 5px;
+        background-color: #AEB4B7;
+    }
+
+    p {
+        font-size: 0.8em;
+        color: #FFFFFF;
+    }
+
+    .swiper-slide {
+        display: block;
+    }
+
+    ion-label {
+        padding-left: 15px;
+    }
+
+    ion-input, ion-select, ion-textarea {
+        padding: 5px 15px;
+    }
+
+    // .invalid {
+    //     border-bottom: 1px solid #ea6153;
+    // }
+
+    // ion-input.ng-valid, ion-select.ng-valid, ion-textarea.ng-valid {
+    //     border: 1px solid #32db64;
+    // }
+}

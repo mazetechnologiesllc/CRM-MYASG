@@ -1,0 +1,321 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Join the Network</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="signUpView">
+    <ion-segment-button value="personalInfo">
+      <i class="fa fa-address-card" aria-hidden="true"></i>
+    </ion-segment-button>
+    <ion-segment-button value="paymentInfo" [disabled]="!personalInfoForm.valid">
+      <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="signUpView">
+
+    <div *ngSwitchCase="'personalInfo'">
+      <h6 ion-text text-center color="appWarning">Basic Information</h6>
+
+      <form [formGroup]="personalInfoForm">
+        <ion-item
+          [class.invalid]="!personalInfoForm.controls.userType.valid && personalInfoForm.controls.userType.dirty">
+          <ion-label stacked>User Type <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="userType" (ionChange)="onUserTypeChange()">
+            <!-- <ion-option *ngFor="let userType of userTypes" [value]="userType">{{userType}}</ion-option> -->
+            <ion-option value="company">Company</ion-option>
+            <ion-option value="manager">Manager</ion-option>
+            <ion-option value="affiliate">Affiliate</ion-option>
+            <ion-option value="client">Client</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="selectedUserType === 'company'"
+          [class.invalid]="!personalInfoForm.controls.companyName.valid && personalInfoForm.controls.companyName.dirty">
+          <ion-label stacked>Company Name <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="companyName" placeholder="Company Name"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="selectedUserType === 'manager' || selectedUserType === 'affiliate'"
+          [class.invalid]="!personalInfoForm.controls.createType.valid && personalInfoForm.controls.createType.dirty">
+          <ion-label stacked>Select Type <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="createType" (ionChange)="onCreateTypeChange()">
+            <ion-option value="under">Under Manager</ion-option>
+            <ion-option value="individual">Individual</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="selectedUserType === 'client'"
+          [class.invalid]="!personalInfoForm.controls.services.valid && personalInfoForm.controls.services.dirty">
+          <ion-label stacked>Services <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" multiple="true" formControlName="services" (ionChange)="onServicesChange()">
+            <ion-option *ngFor="let services of listServices" [value]="services.id">
+              {{services.service}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item
+          *ngIf="selectedCreateType === 'under' && (selectedUserType === 'manager' || selectedUserType === 'affiliate')"
+          [class.invalid]="!personalInfoForm.controls.manager.valid && personalInfoForm.controls.manager.dirty">
+          <ion-label stacked>Manager <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="manager">
+            <ion-option text-wrap *ngFor="let manager of managers" [value]="manager.id">
+              {{manager.name}} {{ manager.userName}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!personalInfoForm.controls.firstName.valid && personalInfoForm.controls.firstName.dirty">
+          <ion-label stacked>First Name <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="firstName" placeholder="e.g. Mary"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Middle Name</ion-label>
+          <ion-input type="text" formControlName="middleName" placeholder="e.g. Lee"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Last Name</ion-label>
+          <ion-input type="text" formControlName="lastName" placeholder="e.g. Bianchi"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Suffix</ion-label>
+          <ion-input type="text" formControlName="suffix" placeholder="Mr/Mrs/Miss"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.email.valid && personalInfoForm.controls.email.dirty">
+          <ion-label stacked>Email <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="email" formControlName="email" placeholder="eg. myname@domain.com"></ion-input>
+        </ion-item>
+
+        <!-- <ion-item no-lines *ngIf="personalInfoForm.controls.email.dirty && personalInfoForm.controls.email.invalid">
+          Invalid email.
+        </ion-item> -->
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.contact.valid && personalInfoForm.controls.contact.dirty">
+          <ion-label stacked>Contact Number <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="contact" placeholder="eg. (999)-999-9999"
+            [brmasker]="{mask:'(000)-000-0000', len:14, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.gender.valid && personalInfoForm.controls.gender.dirty">
+          <ion-label stacked>Gender <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="gender">
+            <ion-option value="male">Male</ion-option>
+            <ion-option value="female">Female</ion-option>
+            <ion-option value="other">Other</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.ssn.valid && personalInfoForm.controls.ssn.dirty">
+          <ion-label stacked>SSN No. <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="ssn" placeholder="eg. 999-99-9999"
+            [brmasker]="{mask:'000-00-0000', len:11, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!personalInfoForm.controls.dateOfBirth.valid && personalInfoForm.controls.dateOfBirth.dirty">
+          <ion-label stacked>Date of Birth <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="dateOfBirth" placeholder="MM/DD/YYYY"
+            [brmasker]="{mask:'00/00/0000', len:10, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.country.valid && personalInfoForm.controls.country.dirty">
+          <ion-label stacked>Country <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="country">
+            <ion-option value="231">United States</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.state.valid && personalInfoForm.controls.state.dirty">
+          <ion-label stacked>State <span class="mandatory-field">*</span></ion-label>
+          <ion-select placeholder="Select" formControlName="state">
+            <ion-option *ngFor="let state of states" [value]="state.id">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.city.valid && personalInfoForm.controls.city.dirty">
+          <ion-label stacked>City <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!personalInfoForm.controls.addLine1.valid && personalInfoForm.controls.addLine1.dirty">
+          <ion-label stacked>Address 1 <span class="mandatory-field">*</span></ion-label>
+          <ion-textarea formControlName="addLine1"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Address 2</ion-label>
+          <ion-textarea formControlName="addLine2"></ion-textarea>
+        </ion-item>
+
+        <ion-item [class.invalid]="!personalInfoForm.controls.zip.valid && personalInfoForm.controls.zip.dirty">
+          <ion-label stacked>Zip <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="zip" placeholder="eg. 99999"
+            [brmasker]="{mask:'00000', len:5, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Internal Notes</ion-label>
+          <ion-textarea formControlName="internalNotes"></ion-textarea>
+        </ion-item>
+
+        <ion-item no-lines *ngIf="!personalInfoForm.valid">
+          <p ion-text text-center color="danger">Fields marked with * are required.</p>
+        </ion-item>
+
+        <ion-item no-lines>
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col>
+              <button type="button" ion-button full color="appWarning" [disabled]="!personalInfoForm.valid" (click)="continue()">
+                Continue &nbsp;<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </form>
+    </div>
+
+    <div *ngSwitchCase="'paymentInfo'">
+      <!-- <ion-item no-lines text-center text-wrap>
+          <h2 ion-text color="appWarning">Payment Details</h2>
+        </ion-item> -->
+      <h6 ion-text text-center color="appWarning">Payment Details</h6>
+
+      <form [formGroup]="paymentInfoForm">
+        <ion-item [class.invalid]="!paymentInfoForm.controls.payBy.valid && paymentInfoForm.controls.payBy.dirty">
+          <ion-label stacked>Pay by <span class="mandatory-field">*</span></ion-label>
+          <ion-select formControlName="payBy" placeholder="Select">
+            <ion-option value="debit">Debit Card</ion-option>
+            <ion-option value="credit">Credit Card</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!paymentInfoForm.controls.cardHolderName.valid && paymentInfoForm.controls.cardHolderName.dirty">
+          <ion-label stacked>Card Holder Name <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="cardHolderName" placeholder="e.g. Mary Lee Bianchi"></ion-input>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!paymentInfoForm.controls.cardNumber.valid && paymentInfoForm.controls.cardNumber.dirty">
+          <ion-label stacked>Card Number <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="cardNumber" placeholder="1234 5678 1234 5678"
+            [brmasker]="{mask:'0000 0000 0000 0000', len:19, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item
+          [class.invalid]="!paymentInfoForm.controls.cardExpirationDate.valid && paymentInfoForm.controls.cardExpirationDate.dirty">
+          <ion-label stacked>Card Expiration Date <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="cardExpirationDate" placeholder="MM/YYYY"
+            [brmasker]="{mask:'00/0000', len:14, type:'number'}"></ion-input>
+          <!-- <ion-select col-6>
+                <ion-option selected>MM</ion-option>
+                <ion-option value="01">01</ion-option>
+                <ion-option value="02">02</ion-option>
+                <ion-option value="03">03</ion-option>
+                <ion-option value="04">04</ion-option>
+                <ion-option value="05">05</ion-option>
+                <ion-option value="06">06</ion-option>
+                <ion-option value="07">07</ion-option>
+                <ion-option value="08">08</ion-option>
+                <ion-option value="09">09</ion-option>
+                <ion-option value="10">10</ion-option>
+                <ion-option value="11">11</ion-option>
+                <ion-option value="12">12</ion-option>
+              </ion-select>
+              <ion-select col-6>
+                <ion-option selected>YYYY</ion-option>
+                <ion-option value="2019">2019</ion-option>
+                <ion-option value="2020">2020</ion-option>
+                <ion-option value="2021">2021</ion-option>
+                <ion-option value="2022">2022</ion-option>
+                <ion-option value="2023">2023</ion-option>
+                <ion-option value="2024">2024</ion-option>
+                <ion-option value="2025">2025</ion-option>
+              </ion-select> -->
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.cvv.valid && paymentInfoForm.controls.cvv.dirty">
+          <ion-label stacked>CVV <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="password" formControlName="cvv" placeholder="123"
+            [brmasker]="{mask:'0000', len:4, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.country.valid && paymentInfoForm.controls.country.dirty">
+          <ion-label stacked>Country <span class="mandatory-field">*</span></ion-label>
+          <ion-select formControlName="country" placehoder="Select">
+            <ion-option value="231">United States</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.state.valid && paymentInfoForm.controls.state.dirty">
+          <ion-label stacked>State <span class="mandatory-field">*</span></ion-label>
+          <ion-select formControlName="state" placeholder="Select">
+            <ion-option *ngFor="let state of states" [value]="state.id">{{state.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.city.valid && paymentInfoForm.controls.city.dirty">
+          <ion-label stacked>City <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.addLine1.valid && paymentInfoForm.controls.addLine1.dirty">
+          <ion-label stacked>Address 1 <span class="mandatory-field">*</span></ion-label>
+          <ion-textarea formControlName="addLine1"></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Address 2</ion-label>
+          <ion-textarea formControlName="addLine2"></ion-textarea>
+        </ion-item>
+
+        <ion-item [class.invalid]="!paymentInfoForm.controls.zip.valid && paymentInfoForm.controls.zip.dirty">
+          <ion-label stacked>Zip <span class="mandatory-field">*</span></ion-label>
+          <ion-input type="text" formControlName="zip" placeholder="eg. 99999"
+            [brmasker]="{mask:'00000', len:5, type:'number'}"></ion-input>
+        </ion-item>
+
+        <ion-item no-lines *ngIf="!paymentInfoForm.valid">
+          <p ion-text text-center color="danger">Fields marked with * are required.</p>
+        </ion-item>
+
+        <ion-item no-lines>
+          <p ion-text text-center>Sign up Amount: <span style="color: #f53d3d;">${{signUpAmount}}</span></p>
+          <p ion-text text-center>Monthly Fee: <span style="color: #f53d3d;">${{monthlyFee}}</span></p>
+          <p ion-text text-center>Total Amount: <span style="color: #f53d3d;">${{totalAmount}}</span></p>
+        </ion-item>
+
+        <ion-item no-lines>
+          <ion-row>
+            <ion-col>
+              <button ion-button full (click)="back()">
+                <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>&nbsp; Back
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button full color="appSuccess" type="button" [disabled]="!paymentInfoForm.valid" (click)="join()">
+                Join &nbsp;<i class="fa fa-check-circle-o" aria-hidden="true"></i>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+
+      </form>
+    </div>
+  </div>
+
+</ion-content>

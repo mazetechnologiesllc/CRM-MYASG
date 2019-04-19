@@ -1,0 +1,102 @@
+<ion-content class="pageContent">
+
+  <ion-card>
+    <ion-item no-lines text-center>
+      <div style="color:#17A2B8; font-size: 30px;">
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+      </div>
+      <h1 style="color:#17A2B8;">
+        Update Profile
+      </h1>
+    </ion-item>
+
+    <form #managerProfileForm="ngForm" (ngSubmit)="updateProfile()" autocomplete="off">
+      <div *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</div>
+      <div *ngIf="successMessage" class="successMessage">{{successMessage}}</div>
+
+      <ion-list *ngIf="!loggedInUser">
+        <div class="successMessage">Loading....</div>
+      </ion-list>
+
+      <ion-list *ngIf="loggedInUser">
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" name="userName" value="{{loggedInUser.userName}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input type="text" name="firstName" value="{{loggedInUser.firstName}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Middle Name</ion-label>
+          <ion-input type="text" name="middleName" value="{{loggedInUser.middleName}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input type="text" name="lastName" value="{{loggedInUser.lastName}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Suffix</ion-label>
+          <ion-input type="text" name="suffix" value="{{loggedInUser.suffix}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" name="email" value="{{loggedInUser.email}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Gender</ion-label>
+          <ion-input type="text" name="gender" value="{{loggedInUser.gender}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Phone No</ion-label>
+          <ion-input type="text" name="contactNumber" value="{{loggedInUser.contactNumber}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Address</ion-label>
+          <ion-input type="text" name="address" value="{{loggedInUser.address}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>City</ion-label>
+          <ion-input type="text" name="city" value="{{loggedInUser.city}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>State</ion-label>
+          <ion-input type="text" name="state" value="{{loggedInUser.state}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Zip</ion-label>
+          <ion-input type="text" name="zip" value="{{loggedInUser.zip}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Fax</ion-label>
+          <ion-input type="text" name="fax" value="{{loggedInUser.fax}}"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <img id="camera-image" />
+        </ion-item>
+
+        <ion-item>
+          <button ion-button color="appSecondary" full (click)="takePhoto()">Take Photo</button>
+          <button ion-button color="appPrimary" full type="submit">Update</button>
+        </ion-item>
+
+      </ion-list>
+
+    </form>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,4 @@
+#Fri Apr 19 11:34:35 IST 2019
+base.0=/home/pizone/Desktop/Projects/Ionic Projects/CRM-MYASG-1 TEST/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

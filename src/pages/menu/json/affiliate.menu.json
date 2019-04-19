@@ -1,0 +1,238 @@
+[{
+    "title": "Home",
+    "pageName": "AffiliateHomePage",
+    "component": "AffiliateHomePage",
+    "icon": "home",
+    "color": "appPrimary",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "Dashboard",
+    "pageName": "AffiliateDashboardPage",
+    "component": "AffiliateDashboardPage",
+    "icon": "speedometer",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "Profile",
+    "pageName": "",
+    "component": "",
+    "icon": "settings",
+    "color": "appDark",
+    "iconColor": "appPrimary",
+    "subMenu": [{
+        "title": "Edit Profile",
+        "pageName": "ProfilePage",
+        "component": "ProfilePage",
+        "icon": "settings",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      },
+      {
+        "title": "Update Payment Info",
+        "pageName": "HomePage",
+        "component": "HomePage",
+        "icon": "folder-open",
+        "color": "appDark",
+        "iconColor": "primary"
+      },
+      {
+        "title": "Change Password",
+        "pageName": "ChangePasswordPage",
+        "component": "ChangePasswordPage",
+        "icon": "lock",
+        "color": "appDark",
+        "iconColor": "appWarning"
+      }
+    ]
+  },
+  {
+    "title": "Web Leads",
+    "pageName": "",
+    "component": "",
+    "icon": "globe",
+    "color": "appDark",
+    "iconColor": "appPrimary",
+    "subMenu": [{
+      "title": "Show all Web Leads",
+      "pageName": "ListWebLeadPage",
+      "component": "ListWebLeadPage",
+      "icon": "list",
+      "color": "appDark",
+      "iconColor": "appSuccess"
+    }]
+  },
+  {
+    "title": "Manager",
+    "pageName": "",
+    "component": "",
+    "icon": "person",
+    "color": "appDark",
+    "iconColor": "appPrimary",
+    "subMenu": [{
+        "title": "Show all Manager",
+        "pageName": "ListManagerPage",
+        "component": "ListManagerPage",
+        "icon": "people",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      },
+      {
+        "title": "Add Manager",
+        "pageName": "AddManagerPage",
+        "component": "AddManagerPage",
+        "icon": "person-add",
+        "color": "appDark",
+        "iconColor": "primary"
+      }
+    ]
+  },
+  {
+    "title": "Affiliate",
+    "pageName": "",
+    "component": "",
+    "icon": "contact",
+    "color": "appDark",
+    "iconColor": "appPrimary",
+    "subMenu": [{
+        "title": "Show all Affiliate",
+        "pageName": "ListAffiliatePage",
+        "component": "ListAffiliatePage",
+        "icon": "people",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      },
+      {
+        "title": "Add Affiliate",
+        "pageName": "AddAffiliatePage",
+        "component": "AddAffiliatePage",
+        "icon": "person-add",
+        "color": "appDark",
+        "iconColor": "primary"
+      }
+    ]
+  },
+  {
+    "title": "Client",
+    "pageName": "",
+    "component": "",
+    "icon": "globe",
+    "color": "appDark",
+    "iconColor": "appPrimary",
+    "subMenu": [{
+      "title": "Show all Client",
+      "pageName": "ListClientPage",
+      "component": "ListClientPage",
+      "icon": "list",
+      "color": "appDark",
+      "iconColor": "appSuccess"
+    }]
+  },
+  {
+    "title": "Leads",
+    "pageName": "",
+    "component": "",
+    "icon": "clipboard",
+    "color": "appDark",
+    "iconColor": "appUsersIcon",
+    "subMenu": [{
+        "title": "Show all Leads",
+        "pageName": "ListLeadPage",
+        "component": "ListLeadPage",
+        "icon": "people",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      },
+      {
+        "title": "Add Lead",
+        "pageName": "AddLeadPage",
+        "component": "AddLeadPage",
+        "icon": "person-add",
+        "color": "appDark",
+        "iconColor": "primary"
+      },
+      {
+        "title": "Credit Lead",
+        "pageName": "HomePage",
+        "component": "HomePage",
+        "icon": "egg",
+        "color": "appDark",
+        "iconColor": "appPrimary"
+      }
+    ]
+  },
+  {
+    "title": "Prospects",
+    "pageName": "",
+    "component": "",
+    "icon": "trending-up",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon",
+    "subMenu": [{
+        "title": "Show All Affiliate and Manager",
+        "pageName": "ListProspectsPage",
+        "component": "ListProspectsPage",
+        "icon": "contacts",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      },
+      {
+        "title": "Show Leads",
+        "pageName": "",
+        "component": "",
+        "icon": "list",
+        "color": "appDark",
+        "iconColor": "appSuccess"
+      }
+    ]
+  },
+  {
+    "title": "Update Payment Info",
+    "pageName": "",
+    "component": "",
+    "icon": "cash",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "My Schedules",
+    "pageName": "",
+    "component": "",
+    "icon": "calendar",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "Emails",
+    "pageName": "",
+    "component": "",
+    "icon": "mail",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "Received Emails",
+    "pageName": "",
+    "component": "",
+    "icon": "archive",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "Marketing Materials",
+    "pageName": "",
+    "component": "",
+    "icon": "basket",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  },
+  {
+    "title": "User Logs",
+    "pageName": "",
+    "component": "",
+    "icon": "filing",
+    "color": "appDark",
+    "iconColor": "appDashboardIcon"
+  }
+]

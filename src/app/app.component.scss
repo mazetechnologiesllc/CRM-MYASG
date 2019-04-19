@@ -1,0 +1,73 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// Disable scroll bar from all pages
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+// ion-app {
+//   font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif !important;
+//   letter-spacing: .2px;
+// }
+ion-app.ios {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif !important;
+  letter-spacing: .2px;
+}
+
+ion-app.android {
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif !important;
+  letter-spacing: .2px;
+}
+
+.errorMessage {
+  text-align: center;
+  border-radius: 3px;
+  padding: 10px 0 10px 0;
+  margin: 5px;
+  background-color: #F2DEDE;
+  color: #B94442;
+}
+
+.successMessage {
+  text-align: center;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 10px 0 10px 0;
+  background-color: #C6DBC6;
+  color: #007100;
+}
+
+.pageContent {
+  background-color: #E9ECEF;
+}
+
+.scroll-content {
+  margin-top: 55px;
+  padding-bottom: 10px;
+}
+
+.mandatory-field {
+  color: #B94442;
+}
+
+.custom-page-header .item-inner {
+  border-bottom: 0 !important;
+}
+
+.button-full {
+  margin-left: 4%;
+  width: 95%;
+}

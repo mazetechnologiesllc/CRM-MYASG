@@ -1,0 +1,156 @@
+<ion-content (ionScrollStart)="scrollStart($event)" (ionScrollEnd)="scrollStart($event)">
+
+  <!-- <ion-item no-lines text-center>
+    <div style="color:#17A2B8; font-size: 30px;">
+      <ion-icon ios="ios-create" md="ios-create"></ion-icon>
+    </div>
+    <h1 style="color:#17A2B8;">
+      Update Profile
+    </h1>
+  </ion-item> -->
+
+  <form name="profileForm" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</div>
+    <div *ngIf="successMessage" class="successMessage">{{successMessage}}</div>
+
+    <ion-list *ngIf="!loggedInUser">
+      <div class="successMessage">Loading....</div>
+    </ion-list>
+
+    <ion-list *ngIf="loggedInUser">
+
+      <ion-item no-lines text-center>
+        <img style="width: 50%; height: 50%; border-radius: 100%;" id="camera-image" src="../../assets/imgs/user-avatar.png" />
+        <button ion-button class="button-overlay" *ngIf="edit" (click)="takePhoto()">Take Photo</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon color="success" ios="ios-person" md="md-person"></ion-icon>
+          Username
+        </ion-label>
+        <ion-input type="text" formControlName="userName" value="{{loggedInUser.userName}}" [disabled]="true"
+          [class.invalid]="!profileForm.controls.userName.valid && (profileForm.controls.userName.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon color="success" ios="ios-person" md="md-person"></ion-icon>
+          First Name
+        </ion-label>
+        <ion-input type="text" formControlName="firstName" value="{{loggedInUser.firstName}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.firstName.valid && (profileForm.controls.firstName.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon color="success" ios="ios-person" md="md-person"></ion-icon>
+          Middle Name
+        </ion-label>
+        <ion-input type="text" formControlName="middleName" value="{{loggedInUser.middleName}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.middleName.valid && (profileForm.controls.middleName.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon color="success" ios="ios-person" md="md-person"></ion-icon>
+          Last Name
+        </ion-label>
+        <ion-input type="text" formControlName="lastName" value="{{loggedInUser.lastName}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.lastName.valid && (profileForm.controls.lastName.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-leaf" md="md-leaf"></ion-icon>
+          Suffix
+        </ion-label>
+        <ion-input type="text" formControlName="suffix" value="{{loggedInUser.suffix}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.suffix.valid && (profileForm.controls.suffix.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-at" md="md-at"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="text" formControlName="email" value="{{loggedInUser.email}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.email.valid && (profileForm.controls.email.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-man" md="md-man"></ion-icon>
+          Gender
+        </ion-label>
+        <ion-input type="text" formControlName="gender" value="{{loggedInUser.gender}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.gender.valid && (profileForm.controls.gender.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+          Phone No
+        </ion-label>
+        <ion-input type="text" formControlName="contactNumber" value="{{loggedInUser.contactNumber}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.contactNumber.valid && (profileForm.controls.contactNumber.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+          Address
+        </ion-label>
+        <ion-input type="text" formControlName="address" value="{{loggedInUser.address}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.address.valid && (profileForm.controls.address.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
+          City
+        </ion-label>
+        <ion-input type="text" formControlName="city" value="{{loggedInUser.city}}" [disabled]="!edit" [class.invalid]="!profileForm.controls.city.valid && (profileForm.controls.city.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-compass" md="md-compass"></ion-icon>
+          State
+        </ion-label>
+        <ion-input type="text" formControlName="state" value="{{loggedInUser.state}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.state.valid && (profileForm.controls.state.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-code-working" md="md-code-working"></ion-icon>
+          Zip
+        </ion-label>
+        <ion-input type="text" formControlName="zip" value="{{loggedInUser.zip}}" [disabled]="!edit" [class.invalid]="!profileForm.controls.zip.valid && (profileForm.controls.zip.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-photos" md="md-photos"></ion-icon>
+          Fax
+        </ion-label>
+        <ion-input type="text" formControlName="fax" value="{{loggedInUser.fax}}" [disabled]="!edit || showFab" [class.invalid]="!profileForm.controls.fax.valid && (profileForm.controls.fax.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <button ion-button full *ngIf="edit" color="appPrimary" type="submit">Update</button>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+
+
+  <ion-fab bottom right (click)="editProfile()" *ngIf="!edit">
+    <button ion-fab mini>
+      <ion-icon ios="ios-create" md="md-create"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

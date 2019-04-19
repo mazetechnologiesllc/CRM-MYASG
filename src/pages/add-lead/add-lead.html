@@ -1,0 +1,452 @@
+<ion-header>
+    <ion-navbar no-border-bottom>
+        <ion-title>
+            Segments
+        </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="step">
+            <ion-segment-button value="clientProfile">
+                Profile
+            </ion-segment-button>
+            <ion-segment-button value="residentialAddress" [disabled]="!personalInfoForm.valid">
+                Address
+            </ion-segment-button>
+            <ion-segment-button value="paymentGetewayDetail" [disabled]="!addressInfoForm.valid">
+                Payment
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div [ngSwitch]="step">
+        <ion-list *ngSwitchCase="'clientProfile'">
+            <form [formGroup]="personalInfoForm">
+                <ion-item class="custom-page-header">
+                    <h1>Client Profile </h1>
+                </ion-item>
+                <ion-item>
+                    <ion-label>First Name <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input type="text" formControlName="firstName"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Middle Name</ion-label>
+                    <ion-input type="text" formControlName="middleName"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Last Name</ion-label>
+                    <ion-input type="text" formControlName="lastName"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Suffix</ion-label>
+                    <ion-input type="text" formControlName="suffix"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Contact No <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input maxlength="14" type="text" formControlName="contact" placeholder="(999)-999-9999"
+                        [brmasker]="{mask:'(000)-000-0000', len:14, type:'number'}"></ion-input>
+
+
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Email<span class="mandatory-field"> *</span></ion-label>
+                    <ion-input type="text" formControlName="email"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Gender<span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="gender" [(ngModel)]="os" submitText="Ok" cancelText="Cancel">
+                        <ion-option value="male">Male</ion-option>
+                        <ion-option value="female">Felmae</ion-option>
+                        <ion-option value="other">Other</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Alternative No.</ion-label>
+                    <ion-input maxlength="14" formControlName="alternativeContact" type="text" placeholder="(999)-999-9999"
+                        [brmasker]="{mask:'(000)-000-0000', len:14, type:'number'}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Date of Birth<span class="mandatory-field"> *</span></ion-label>
+                    <ion-datetime formControlName="dateOfBirth" displayFormat="MMM DD YYYY" [(ngModel)]="event.month">
+                    </ion-datetime>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>SSN<span class="mandatory-field"> *</span></ion-label>
+                    <ion-input maxlength="13" formControlName="ssn" type="text" placeholder="999-99-9999" [brmasker]="{mask:'999-99-9999', len:11, type:'number'}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Profile Image</ion-label>
+                    <ion-input type="file"></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                    <ion-row>
+                        <ion-col></ion-col>
+                        <ion-col>
+                            <button ion-button full color="appWarning" [disabled]="!personalInfoForm.valid" (click)="switchTab('address')">
+                                Next &nbsp;<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </form>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'residentialAddress'">
+
+            <ion-item class="custom-page-header">
+                <h1>Residential Address</h1>
+            </ion-item>
+            <form [formGroup]="addressInfoForm">
+
+                <ion-item>
+                    <ion-label>Country <span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="country" [(ngModel)]="country" submitText="Ok" cancelText="Cancel">
+                        <ion-option value="US">United State</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>State <span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="state" [(ngModel)]="state" submitText="Ok" cancelText="Cancel">
+
+                        <ion-option value="New York">New York</ion-option>
+
+                        <ion-option value="California">California</ion-option>
+
+                        <ion-option value="Illinois">Illinois</ion-option>
+
+                        <ion-option value="Texas">Texas</ion-option>
+
+                        <ion-option value="Pennsylvania">Pennsylvania</ion-option>
+
+                        <ion-option value="Arizona">Arizona</ion-option>
+
+                        <ion-option value="Florida">Florida</ion-option>
+
+                        <ion-option value="Indiana">Indiana</ion-option>
+
+                        <ion-option value="Ohio">Ohio</ion-option>
+
+                        <ion-option value="North Carolina">North Carolina</ion-option>
+
+                        <ion-option value="Michigan">Michigan</ion-option>
+
+                        <ion-option value="Washington">Washington</ion-option>
+
+                        <ion-option value="Colorado">Colorado</ion-option>
+
+                        <ion-option value="District of Columbia">District of Columbia</ion-option>
+
+                        <ion-option value="Tennessee">Tennessee</ion-option>
+
+                        <ion-option value="Massachusetts">Massachusetts</ion-option>
+
+                        <ion-option value="Maryland">Maryland</ion-option>
+
+                        <ion-option value="Oklahoma">Oklahoma</ion-option>
+
+                        <ion-option value="Oregon">Oregon</ion-option>
+
+                        <ion-option value="Nevada">Nevada</ion-option>
+
+                        <ion-option value="Kentucky">Kentucky</ion-option>
+
+                        <ion-option value="Wisconsin">Wisconsin</ion-option>
+
+                        <ion-option value="New Mexico">New Mexico</ion-option>
+
+                        <ion-option value="Missouri">Missouri</ion-option>
+
+                        <ion-option value="Georgia">Georgia</ion-option>
+
+                        <ion-option value="Virginia">Virginia</ion-option>
+
+                        <ion-option value="Nebraska">Nebraska</ion-option>
+
+                        <ion-option value="Connecticut">Connecticut</ion-option>
+
+                        <ion-option value="Idaho">Idaho</ion-option>
+
+                        <ion-option value="Minnesota">Minnesota</ion-option>
+
+                        <ion-option value="Kansas">Kansas</ion-option>
+
+                        <ion-option value="Louisiana">Louisiana</ion-option>
+
+                        <ion-option value="Hawai'i">Hawai'i</ion-option>
+
+                        <ion-option value="Kentucky">Kentucky</ion-option>
+
+                        <ion-option value="Alaska">Alaska</ion-option>
+
+                        <ion-option value="New Jersey">New Jersey</ion-option>
+
+                        <ion-option value="Alabama">Alabama</ion-option>
+
+                        <ion-option value="Iowa">Iowa</ion-option>
+
+                        <ion-option value="Arkansas">Arkansas</ion-option>
+
+                        <ion-option value="Utah">Utah</ion-option>
+
+                        <ion-option value="Rhode Island">Rhode Island</ion-option>
+
+                        <ion-option value="Mississippi">Mississippi</ion-option>
+
+                        <ion-option value="South Dakota">South Dakota</ion-option>
+
+                        <ion-option value="South Carolina">South Carolina</ion-option>
+
+                        <ion-option value="North Dakota">North Dakota</ion-option>
+
+                        <ion-option value="New Hampshire">New Hampshire</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>City <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="city" type="text"></ion-input>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label>Zip Code <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="zipCode" type="text" placeholder="99999" [brmasker]="{mask:'0000', len:5, type:'number'}">
+                    </ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Address <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="address" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Fax No.</ion-label>
+                    <ion-input formControlName="faxNo" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Service <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="service" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Amount $ (USD) <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="amount" type="text"></ion-input>
+                </ion-item>
+                <ion-item no-lines>
+                    <ion-row>
+                        <ion-col></ion-col>
+                        <ion-col>
+                            <button ion-button full color="appWarning" [disabled]="!addressInfoForm.valid" (click)="switchTab('paymentGeteway')">
+                                Next &nbsp;<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </form>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'paymentGetewayDetail'">
+            <ion-item class="custom-page-header">
+                <h1>Payment Geteway Detail</h1>
+            </ion-item>
+
+            <form [formGroup]="paymentInfoForm">
+
+                <ion-item>
+                    <ion-label>First Name <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="firstName" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Middle Name</ion-label>
+                    <ion-input type="text" formControlName="middleName"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Last Name</ion-label>
+                    <ion-input type="text" formControlName="lastName"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Suffix</ion-label>
+                    <ion-input type="text" formControlName="suffix"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Contact No <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="contact" type="text" placeholder="(999)-999-9999" [brmasker]="{mask:'(000)-000-0000', len:14, type:'number'}"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Email<span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Country <span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="country" submitText="Ok" cancelText="Cancel">
+                        <ion-option value="US">United State</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>State <span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="state" submitText="Ok" cancelText="Cancel">
+
+                        <ion-option value="New York">New York</ion-option>
+
+                        <ion-option value="California">California</ion-option>
+
+                        <ion-option value="Illinois">Illinois</ion-option>
+
+                        <ion-option value="Texas">Texas</ion-option>
+
+                        <ion-option value="Pennsylvania">Pennsylvania</ion-option>
+
+                        <ion-option value="Arizona">Arizona</ion-option>
+
+                        <ion-option value="Florida">Florida</ion-option>
+
+                        <ion-option value="Indiana">Indiana</ion-option>
+
+                        <ion-option value="Ohio">Ohio</ion-option>
+
+                        <ion-option value="North Carolina">North Carolina</ion-option>
+
+                        <ion-option value="Michigan">Michigan</ion-option>
+
+                        <ion-option value="Washington">Washington</ion-option>
+
+                        <ion-option value="Colorado">Colorado</ion-option>
+
+                        <ion-option value="District of Columbia">District of Columbia</ion-option>
+
+                        <ion-option value="Tennessee">Tennessee</ion-option>
+
+                        <ion-option value="Massachusetts">Massachusetts</ion-option>
+
+                        <ion-option value="Maryland">Maryland</ion-option>
+
+                        <ion-option value="Oklahoma">Oklahoma</ion-option>
+
+                        <ion-option value="Oregon">Oregon</ion-option>
+
+                        <ion-option value="Nevada">Nevada</ion-option>
+
+                        <ion-option value="Kentucky">Kentucky</ion-option>
+
+                        <ion-option value="Wisconsin">Wisconsin</ion-option>
+
+                        <ion-option value="New Mexico">New Mexico</ion-option>
+
+                        <ion-option value="Missouri">Missouri</ion-option>
+
+                        <ion-option value="Georgia">Georgia</ion-option>
+
+                        <ion-option value="Virginia">Virginia</ion-option>
+
+                        <ion-option value="Nebraska">Nebraska</ion-option>
+
+                        <ion-option value="Connecticut">Connecticut</ion-option>
+
+                        <ion-option value="Idaho">Idaho</ion-option>
+
+                        <ion-option value="Minnesota">Minnesota</ion-option>
+
+                        <ion-option value="Kansas">Kansas</ion-option>
+
+                        <ion-option value="Louisiana">Louisiana</ion-option>
+
+                        <ion-option value="Hawai'i">Hawai'i</ion-option>
+
+                        <ion-option value="Kentucky">Kentucky</ion-option>
+
+                        <ion-option value="Alaska">Alaska</ion-option>
+
+                        <ion-option value="New Jersey">New Jersey</ion-option>
+
+                        <ion-option value="Alabama">Alabama</ion-option>
+
+                        <ion-option value="Iowa">Iowa</ion-option>
+
+                        <ion-option value="Arkansas">Arkansas</ion-option>
+
+                        <ion-option value="Utah">Utah</ion-option>
+
+                        <ion-option value="Rhode Island">Rhode Island</ion-option>
+
+                        <ion-option value="Mississippi">Mississippi</ion-option>
+
+                        <ion-option value="South Dakota">South Dakota</ion-option>
+
+                        <ion-option value="South Carolina">South Carolina</ion-option>
+
+                        <ion-option value="North Dakota">North Dakota</ion-option>
+
+                        <ion-option value="New Hampshire">New Hampshire</ion-option>
+                    </ion-select>
+                </ion-item>
+
+
+                <ion-item>
+                    <ion-label>City</ion-label>
+                    <ion-input formControlName="city" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Zip Code<span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="zipCode" type="text" placeholder="99999" [brmasker]="{mask:'99999', len:5, type:'number'}">
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Address Line 1 <span class="mandatory-field"> *</span></ion-label>
+                    <ion-input formControlName="address1" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Address Line 2</ion-label>
+                    <ion-input type="text" formControlName="address2"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label> Payment Mode <span class="mandatory-field"> *</span></ion-label>
+                    <ion-select formControlName="paymentMode" submitText="Ok" cancelText="Cancel">
+                        <ion-option value="DrCr">Dr/Cr</ion-option>
+                        <ion-option value="bankTransfer">Bank Transfer</ion-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>Internal Notes</ion-label>
+                    <ion-input formControlName="internalNote" type="text"></ion-input>
+                </ion-item>
+
+                <ion-item no-lines>
+                    <ion-row>
+                        <ion-col></ion-col>
+                        <ion-col>
+                            <button ion-button full color="appWarning" [disabled]="!paymentInfoForm.valid" (click)="addLead()">
+                                Save &nbsp;<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </form>
+        </ion-list>
+    </div>
+</ion-content>

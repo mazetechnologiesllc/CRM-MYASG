@@ -1,0 +1,204 @@
+<ion-content class="pageContent">
+  <h4 ion-text text-center color="appWarning">All Services</h4>
+  <p ion-text text-center>Companies Products and Services</p>
+
+  <ion-slides pager style="height: 90%;" (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+      <ion-slide>
+        <div class="diag">
+          <div class="service-icon" [@bounce]='state' (@bounce.done)="animationDone()">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+          <!-- <ion-icon ios="ios-analytics" md="md-analytics" color="primary" [@bounce]='state'
+            (@bounce.done)="animationDone()"></ion-icon> -->
+  
+        </div>
+        <div [@bounce]='state'>
+          <h2>MANIFESTATION EDUCATION</h2>
+          <p>Financial life coaching, seminar and presentation training.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-trophy" md="md-trophy" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h2>MARKETING ENTERPRISE</h2>
+          <p>Small business enterprise MLM membership.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-analytics" md="md-analytics" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h2>MONETARY EMPOWERMENT</h2>
+          <p>Individual affiliate manager and affiliate agent MLM membership.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>RAPID 3 CONSULTING</h3>
+          <p>Financial and credit consulting.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-money" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>MENDELSON BURKE ACCOUNTING LLC</h3>
+          <p>Taxes, accounting, bookkeeping, payroll processing.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-car" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>FON VON AUTO</h3>
+          <p>Auto financing and leasing of new vehicles.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-briefcase" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>CARTER THOMAS</h3>
+          <p>Business development services; business plans, incorporation, and LLC formation, minority certification, sam
+            registration. Strategic partnership planning.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>MAZE TECHNOLOGIES</h3>
+          <p>Software development, website development, mobile application development, I.T infrastructure development,
+            crypto-currency consulting.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>NEWTECH MARKETING GROUP</h3>
+          <p>Corporate branding, logos, brochures, flyers, business cards, mail, online, social media, television, and
+            radio marketing campaigns for busines.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-university" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>AMERICAN MONETARY CAPITAL FUNDING</h3>
+          <p>Loan consulting from 20k to 5 million.</p>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="diag">
+            <!-- <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat"> -->
+          <!-- <ion-icon ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon> -->
+          <div class="service-icon" [@bounce]='state'>
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div [@bounce]='state'>
+          <h3>NEW FORTUNE REALTY</h3>
+          <p>Licensed realtor, real-estate purchases lease and rentals, real-estate investments, mortgage, hard money and
+            short-sale consulting.</p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  
+
+  <h4 ion-text text-center color="appWarning">Popular Services</h4>
+
+  <ion-slides style="height: 50%" slidesPerView="2.1" spaceBetween="-10">
+    <ion-slide *ngFor="let service of popServices">
+      <ion-card (click)="openServiceDetail(service)">
+        <img src="{{service?.service_icon ? 'http://myasg.biz/crm_jss/services/'+service?.service_icon:''}}" />
+        <ion-card-content style="height: 60px;">
+          {{service.service}}
+        </ion-card-content>
+        <ion-item text-wrap text-right style="height: 40px;" color="secondary">
+          From {{'$'+ (service.service_price!==null ? service.service_price:'--') }}
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <h4 ion-text text-center color="appWarning">All Services</h4>
+
+  <ion-slides style="height: 50%" slidesPerView="2.1" spaceBetween="-10">
+    <ion-slide *ngFor="let service of allServices">
+      <ion-card (click)="openServiceDetail(service)">
+          <img src="{{service?.service_icon ? 'http://myasg.biz/crm_jss/services/'+service?.service_icon:''}}" />
+        <ion-card-content style="height: 60px;">
+            {{service.service}}
+        </ion-card-content>
+        <ion-item text-wrap text-right style="height: 40px;" color="secondary">
+          From {{'$'+ (service.service_price!==null ? service.service_price:'--') }}
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>MLM</ion-card-title>
+    </ion-card-header>
+
+    <ion-item>
+      <img src="assets/imgs/h3.jpeg" />
+    </ion-item>
+
+    <ion-card-content>
+      At A.M.E.N our multi-level marketing structure is designed to empower you financially by giving you the
+      opportunity to quickly generate a six-figure income selling the products and services of the businesses within
+      the
+      network. A generous and simplified compensation structure is designed to empower you by giving you the ability
+      to
+      make larger commission payouts in shorter time intervals. We accomplish this goal 1st by providing a non pyramid
+      pay structure that doesn’t cater to the top members. There are only two levels to the compensation, manager or
+      affiliate making it easy to understand how your money is actually being made. Our unilateral pay structure gives
+      you the opportunity to join at any level and bypass the grueling five years it usually takes to generate six and
+      seven figure incomes with other most other MLM companies. There is, for most products and services a 20%
+      commission payout to affiliate managers and a 10% commission payout to affiliate agents.
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

@@ -1,0 +1,175 @@
+<ion-header>
+
+  <ion-toolbar color="sideMenuHead">
+
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <span *ngIf="isLoggedIn" style="font-size: 16px;">{{ loggedInUserRole + ' Panel' }}</span>
+      <span *ngIf="!isLoggedIn" style="font-size: 16px;">AMEN BizzApp</span>
+      <!-- <div ion-text *ngIf="loggedInUser" style="color:#17A2B8; font-size: 12px;">
+        {{ loggedInUserName }}
+      </div> -->
+    </ion-title>
+
+    <ion-buttons right *ngIf="isLoggedIn">
+      <!-- <button ion-button>
+        <ion-badge color="danger">9</ion-badge>
+        <span style="font-size: 20px;">
+          <ion-icon ios="ios-notifications" md="md-notifications"></ion-icon>
+        </span>
+
+      </button>
+
+      <button ion-button>
+        <span style="font-size: 20px;">
+          <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+        </span>
+      </button> -->
+
+      <button ion-button (click)="logout()">
+        <span style="font-size: 20px;">
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </span>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right *ngIf="!isLoggedIn">
+      <button ion-button (click)="signIn()">
+        <span style="font-size: 20px;">
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </span>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-menu [content]="content">
+
+  <ion-header>
+    <ion-toolbar color="sideMenuHead">
+      <!-- <ion-title>
+        <img style="margin-left: 70px; height: 40px;" src="../../assets/imgs/menu-logo.png" />
+      </ion-title> -->
+
+      <div *ngIf="isLoggedIn" ion-text text-center padding color="light">
+        <div style="font-size: 50px;">
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </div>
+        <span style="font-size: 12px;">{{ loggedInUserRole | uppercase }}</span>
+        <br /> <span ion-text text-wrap *ngIf="loggedInUser" style="font-size: 12px;">{{ loggedInUserName }}</span>
+        <br /> <span ion-text text-wrap *ngIf="loggedInUser" style="font-size: 12px;">{{ loggedInUser.email }}</span>
+      </div>
+
+      <div *ngIf="!isLoggedIn" ion-text text-center padding color="light">
+        <div style="font-size: 50px;">
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </div>
+        <span style="font-size: 12px;">Hello! GUEST</span>
+        <br /> <span ion-text text-wrap style="font-size: 12px;">Welcome to AMEN BizzApp</span>
+      </div>
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <br />
+    <ion-list no-lines>
+      <div *ngFor="let p of pages;let i=index;">
+        <ion-item no-margin menuClose class="menuButton" *ngIf="!p.subMenu" (click)="openPage(p, p.title)" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;">
+          <!-- <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon> -->
+          <span style="font-size: 14px;">
+            <ion-icon item-start [name]="p.icon" [color]="p.iconColor"></ion-icon>
+          </span>
+          <span ion-text [color]="p.color">
+            {{p.title}}
+          </span>
+        </ion-item>
+        <div *ngIf="p.subMenu">
+          <ion-item no-margin class="menuButton" (click)="toggleSubMenu(i)" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;">
+            <span style="font-size: 14px;">
+              <ion-icon item-start [name]="p.icon" [color]="p.iconColor"></ion-icon>
+            </span>
+            <span ion-text [color]="p.color">
+              {{p.title}}
+            </span>
+            <ion-icon item-end ios="ios-arrow-dropdown" md="md-arrow-dropdown" [color]="p.iconColor"></ion-icon>
+          </ion-item>
+
+          <div *ngIf="isMenuGroupShown(i)" style="margin-left: 30px;">
+            <ion-item no-margin menuClose class="menuButton" style="font-size: 12px; margin-bottom: -20px; margin-top: -20px;"
+              *ngFor="let s of p.subMenu" (click)="openPage(s, p.title)">
+              <span style="font-size: 12px;">
+                <ion-icon item-start [name]="s.icon" [color]="s.iconColor"></ion-icon>
+              </span>
+              <span ion-text [color]="s.color">
+                {{s.title}}
+              </span>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+
+      <ion-item *ngIf="isLoggedIn" no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+        (click)="logout()">
+        <span style="font-size: 14px;">
+          <ion-icon item-start ios="ios-log-out" md="md-log-out" color="appLogoutIcon"></ion-icon>
+        </span>
+        <span ion-text color="appDark">Logout</span>
+      </ion-item>
+
+      <div *ngIf="!isLoggedIn">
+        <ion-item no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+          (click)="signIn()">
+          <span style="font-size: 14px;">
+            <ion-icon item-start ios="ios-log-in" md="md-log-in" color="appLogoutIcon"></ion-icon>
+          </span>
+          <span ion-text color="appDark">Sign In</span>
+        </ion-item>
+        <ion-item no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+          (click)="openMenu('HomePage')">
+          <span style="font-size: 14px;">
+            <ion-icon item-start ios="ios-home" md="md-home" color="appWarning"></ion-icon>
+          </span>
+          <span ion-text color="appDark">Home</span>
+        </ion-item>
+        <ion-item no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+          (click)="openMenu('AboutUsPage')">
+          <span style="font-size: 14px;">
+            <ion-icon item-start ios="ios-information-circle" md="md-information-circle" color="appWarning"></ion-icon>
+          </span>
+          <span ion-text color="appDark">About Us</span>
+        </ion-item>
+        <ion-item no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+          (click)="openMenu('HowItWorksPage')">
+          <span style="font-size: 14px;">
+            <ion-icon item-start ios="ios-bulb" md="md-bulb" color="secondary"></ion-icon>
+          </span>
+          <span ion-text color="appDark">How it Works</span>
+        </ion-item>
+        <ion-item no-margin menuClose class="menuButton" style="font-size: 14px; margin-bottom: -15px; margin-top: -15px;"
+          (click)="openMenu('JoinUsPage')">
+          <span style="font-size: 14px;">
+            <ion-icon item-start ios="ios-log-in" md="md-log-in" color="primary"></ion-icon>
+          </span>
+          <span ion-text color="appDark">Join the Network</span>
+        </ion-item>
+      </div>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<!-- <ion-footer style="background-color: #E9ECEF; height: 10px; -webkit-box-shadow: none; box-shadow: none;">
+</ion-footer> -->

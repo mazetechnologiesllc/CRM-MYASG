@@ -1,0 +1,125 @@
+<ion-content class="pageContent">
+
+  <ion-card>
+    <ion-item no-lines text-center>
+      <div style="color:#17A2B8; font-size: 30px;">
+        <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>
+      </div>
+      <h1 style="color:#17A2B8;">
+        New Client/Lead info
+      </h1>
+    </ion-item>
+
+    <form #loginForm="ngForm" (ngSubmit)="addClientLead()" autocomplete="off">
+      <div *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</div>
+      <div *ngIf="successMessage" class="successMessage">{{successMessage}}</div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-item>
+            <ion-label floating>First Name</ion-label>
+            <ion-input type="text" name="firstName" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Middle Name</ion-label>
+            <ion-input type="text" name="middleName" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Last Name</ion-label>
+            <ion-input type="text" name="lastName" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Suffix</ion-label>
+            <ion-input type="text" name="suffix" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" name="email" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Service</ion-label>
+            <ion-select>
+              <ion-option *ngFor="let sType of servicesType" name="service">{{sType}}</ion-option>
+
+            </ion-select>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Ammount</ion-label>
+            <ion-input type="number" name="ammount" value=""></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Contact</ion-label>
+            <ion-input type="number" name="contact" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>DOB</ion-label>
+            <ion-input type="date" name="dob" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>City</ion-label>
+            <ion-input type="text" name="city" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>State</ion-label>
+            <ion-input type="text" name="state" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Country</ion-label>
+            <ion-input type="text" name="country" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Zip</ion-label>
+            <ion-input type="text" name="zip" value=""></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item>
+            <ion-label floating>Address</ion-label>
+            <ion-textarea name="address" value=""></ion-textarea>
+          </ion-item>
+        </ion-row>
+
+        <ion-row padding>
+          <button ion-button color="appPrimary" full type="submit">Update</button>
+        </ion-row>
+
+      </ion-grid>
+    </form>
+
+  </ion-card>
+
+</ion-content>

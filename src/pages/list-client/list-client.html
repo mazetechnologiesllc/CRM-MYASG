@@ -1,0 +1,35 @@
+<ion-content class="pageContent">
+  <div style="padding: 10px;">
+    <h1 style="color:#17A2B8;">All Clients</h1>
+
+    <div ion-text text-center *ngIf="!clients">
+      <h4>No Data Found.</h4>
+    </div>
+
+    <div ion-text text-center *ngIf="clients && clients.length == 0">
+      <ion-spinner name="circles"></ion-spinner>
+    </div>
+
+    <div *ngIf="clients && clients.length > 0">
+      <ion-list>
+
+        <ion-item text-wrap *ngFor="let client of clients; let i = index;">
+
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/user-avatar.png" />
+          </ion-avatar>
+
+          <h3>{{ client.suffix }} {{ client.firstName }} {{ client.middleName }} {{
+            client.lastName }}</h3>
+          <p> {{ client.email }}</p>
+
+          <button ion-button large clear item-end (click)="presentPopover($event)">
+            <ion-icon ios="ios-more" md="md-more"></ion-icon>
+          </button>
+
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

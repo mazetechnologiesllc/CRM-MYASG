@@ -1,0 +1,32 @@
+page-login {
+
+    ion-content {
+        background: url('../assets/imgs/bg_login.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        background-size:cover;
+    }
+
+    .scroll-content {
+        overflow-y: hidden;
+    }
+
+    ion-card {
+        border: 1px solid #5F6066;
+    }
+
+    ion-card, ion-item {
+        background: transparent !important;
+        color: #ffffff;
+    }
+    
+    ion-input {
+        color: #ffffff;
+    }
+
+    .label[floating], .input-has-focus {
+        color: #17A2B8 ;
+    }
+
+}
+
+
