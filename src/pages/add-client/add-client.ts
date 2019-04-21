@@ -4,8 +4,9 @@ import { AppUser } from '../../_models';
 
 // Services
 import { LocalStorageProvider } from '../../providers';
+
 /**
- * Generated class for the AddManagerPage page.
+ * Generated class for the AddClientPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,17 +14,21 @@ import { LocalStorageProvider } from '../../providers';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-manager',
-  templateUrl: 'add-manager.html',
+  selector: 'page-add-client',
+  templateUrl: 'add-client.html',
 })
-export class AddManagerPage implements OnInit {
+export class AddClientPage  implements OnInit{
   affiliateType: any[] = [];
   managers: any[] = [];
   durations: any[] = [];
 
   loggedInUser: AppUser;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public localStorageProvider: LocalStorageProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public localStorageProvider: LocalStorageProvider) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AddClientPage');
   }
 
   ngOnInit() {
@@ -49,14 +54,11 @@ export class AddManagerPage implements OnInit {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddManagerPage');
-  }
+   // Custom Methods
 
-  // Custom Methods
-
-  addAffiliate() {
+   addAffiliate() {
     return;
   }
+
 
 }

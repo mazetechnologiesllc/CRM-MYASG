@@ -1,7 +1,7 @@
 page-profile {
 
     .item-inner {
-        margin: 5px 20px 5px 5px;
+        margin: 5px 20px 5px 5px!important;
         border-bottom: 1px solid #2B88D8;
         border-radius: 10px;
     }
@@ -29,7 +29,7 @@ page-profile {
     }
 
     ion-input, ion-select, ion-textarea {
-        padding: 5px 15px;
+        padding: 5px 15px!important;
     }
 
     // .invalid {

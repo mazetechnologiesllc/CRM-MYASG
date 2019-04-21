@@ -14,7 +14,8 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4 text-center>
-        <button ion-button class="circular-button" color="primary">
+        <button ion-button class="circular-button" color="primary"
+        (click)="openPage({'title': 'Dashboard','pageName': 'AffiliateDashboardPage','component': 'AffiliateDashboardPage', 'icon': 'speedometer', 'color': 'appDark','iconColor': 'appDashboardIcon'})">
           <ion-icon ios="ios-podium" md="md-podium"></ion-icon>
         </button>
         <h6 ion-text>Dashboard</h6>

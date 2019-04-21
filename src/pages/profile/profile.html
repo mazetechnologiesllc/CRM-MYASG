@@ -21,7 +21,7 @@
 
       <ion-item no-lines text-center>
         <img style="width: 50%; height: 50%; border-radius: 100%;" id="camera-image" src="../../assets/imgs/user-avatar.png" />
-        <button ion-button class="button-overlay" *ngIf="edit" (click)="takePhoto()">Take Photo</button>
+        <button ion-button class="button-overlay" *ngIf="edit" (click)="openeditprofile()">Take Photo</button>
       </ion-item>
 
       <ion-item>
@@ -78,13 +78,18 @@
           [class.invalid]="!profileForm.controls.email.valid && (profileForm.controls.email.dirty || submitted)"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label color="primary" floating>
+      <ion-item >
+        <ion-label color="primary" floating style="padding-bottom:16px">
           <ion-icon ios="ios-man" md="md-man"></ion-icon>
           Gender
         </ion-label>
-        <ion-input type="text" formControlName="gender" value="{{loggedInUser.gender}}" [disabled]="!edit"
-          [class.invalid]="!profileForm.controls.gender.valid && (profileForm.controls.gender.dirty || submitted)"></ion-input>
+        <!-- <ion-input type="text" formControlName="gender" value="{{loggedInUser.gender}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.gender.valid && (profileForm.controls.gender.dirty || submitted)"></ion-input> -->
+          <ion-select formControlName="gender" [disabled]="!edit"  [class.invalid]="!profileForm.controls.gender.valid && (profileForm.controls.gender.dirty || submitted)">
+            <ion-option value="male">Male</ion-option>
+            <ion-option value="female">Female</ion-option>
+            <ion-option value="other">Other</ion-option>
+          </ion-select>
       </ion-item>
 
       <ion-item>
@@ -103,14 +108,20 @@
         </ion-label>
         <ion-input type="text" formControlName="address" value="{{loggedInUser.address}}" [disabled]="!edit"
           [class.invalid]="!profileForm.controls.address.valid && (profileForm.controls.address.dirty || submitted)"></ion-input>
-      </ion-item>
+      </ion-item>     
 
       <ion-item>
         <ion-label color="primary" floating>
-          <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
-          City
+          <ion-icon ios="ios-compass" md="md-compass"></ion-icon>
+          Country
         </ion-label>
-        <ion-input type="text" formControlName="city" value="{{loggedInUser.city}}" [disabled]="!edit" [class.invalid]="!profileForm.controls.city.valid && (profileForm.controls.city.dirty || submitted)"></ion-input>
+        <!-- <ion-input type="text" formControlName="country" value="{{loggedInUser.state}}" [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.state.valid && (profileForm.controls.state.dirty || submitted)"></ion-input> -->
+
+          <ion-select placeholder="Select" formControlName="country"  [disabled]="!edit"
+          [class.invalid]="!profileForm.controls.state.valid && (profileForm.controls.state.dirty || submitted)">
+            <ion-option value="231">United States</ion-option>
+          </ion-select>
       </ion-item>
 
       <ion-item>
@@ -120,6 +131,14 @@
         </ion-label>
         <ion-input type="text" formControlName="state" value="{{loggedInUser.state}}" [disabled]="!edit"
           [class.invalid]="!profileForm.controls.state.valid && (profileForm.controls.state.dirty || submitted)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" floating>
+          <ion-icon ios="ios-navigate" md="md-navigate"></ion-icon>
+          City
+        </ion-label>
+        <ion-input type="text" formControlName="city" value="{{loggedInUser.city}}" [disabled]="!edit" [class.invalid]="!profileForm.controls.city.valid && (profileForm.controls.city.dirty || submitted)"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -139,7 +158,7 @@
       </ion-item>
 
       <ion-item no-lines>
-        <button ion-button full *ngIf="edit" color="appPrimary" type="submit">Update</button>
+        <button ion-button full *ngIf="edit" color="appPrimary" type="button" [disabled]="!profileForm.valid">Update</button>
       </ion-item>
 
     </ion-list>

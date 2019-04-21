@@ -100,8 +100,7 @@
         <!-- <ion-item no-lines *ngIf="personalInfoForm.controls.email.dirty && personalInfoForm.controls.email.invalid">
           Invalid email.
         </ion-item> -->
-
-        <ion-item [class.invalid]="!personalInfoForm.controls.contact.valid && personalInfoForm.controls.contact.dirty">
+        <ion-item [class.invalid]="personalInfoForm.controls.contact.valid==false && personalInfoForm.controls.contact.dirty">
           <ion-label stacked>Contact Number <span class="mandatory-field">*</span></ion-label>
           <ion-input type="text" formControlName="contact" placeholder="eg. (999)-999-9999"
             [brmasker]="{mask:'(000)-000-0000', len:14, type:'number'}"></ion-input>
@@ -121,12 +120,13 @@
           <ion-input type="text" formControlName="ssn" placeholder="eg. 999-99-9999"
             [brmasker]="{mask:'000-00-0000', len:11, type:'number'}"></ion-input>
         </ion-item>
-
         <ion-item
           [class.invalid]="!personalInfoForm.controls.dateOfBirth.valid && personalInfoForm.controls.dateOfBirth.dirty">
           <ion-label stacked>Date of Birth <span class="mandatory-field">*</span></ion-label>
-          <ion-input type="text" formControlName="dateOfBirth" placeholder="MM/DD/YYYY"
-            [brmasker]="{mask:'00/00/0000', len:10, type:'number'}"></ion-input>
+          <!-- <ion-input type="date" formControlName="dateOfBirth" placeholder="MM/DD/YYYY"
+            [brmasker]="{mask:'00/00/0000', len:10, type:'number'}"></ion-input> -->
+         
+            <ion-datetime displayFormat="MM/DD/YYYY"  formControlName="dateOfBirth" pickerFormat="MM/DD/YYYY" placeholder="MM/DD/YYYY"></ion-datetime>
         </ion-item>
 
         <ion-item [class.invalid]="!personalInfoForm.controls.country.valid && personalInfoForm.controls.country.dirty">
@@ -139,7 +139,7 @@
         <ion-item [class.invalid]="!personalInfoForm.controls.state.valid && personalInfoForm.controls.state.dirty">
           <ion-label stacked>State <span class="mandatory-field">*</span></ion-label>
           <ion-select placeholder="Select" formControlName="state">
-            <ion-option *ngFor="let state of states" [value]="state.id">{{state.name}}</ion-option>
+            <ion-option *ngFor="let state of states" [value]="state.name">{{state.name}}</ion-option>
           </ion-select>
         </ion-item>
 
@@ -219,8 +219,9 @@
         <ion-item
           [class.invalid]="!paymentInfoForm.controls.cardExpirationDate.valid && paymentInfoForm.controls.cardExpirationDate.dirty">
           <ion-label stacked>Card Expiration Date <span class="mandatory-field">*</span></ion-label>
-          <ion-input type="text" formControlName="cardExpirationDate" placeholder="MM/YYYY"
-            [brmasker]="{mask:'00/0000', len:14, type:'number'}"></ion-input>
+          <!-- <ion-input type="text" formControlName="cardExpirationDate" placeholder="MM/YYYY"
+            [brmasker]="{mask:'00/0000', len:14, type:'number'}"></ion-input> -->
+            <ion-datetime displayFormat="MM/YYYY"  formControlName="cardExpirationDate" pickerFormat="MM/YYYY" placeholder="MM/YYYY" max="2050"></ion-datetime>
           <!-- <ion-select col-6>
                 <ion-option selected>MM</ion-option>
                 <ion-option value="01">01</ion-option>
@@ -264,7 +265,7 @@
         <ion-item [class.invalid]="!paymentInfoForm.controls.state.valid && paymentInfoForm.controls.state.dirty">
           <ion-label stacked>State <span class="mandatory-field">*</span></ion-label>
           <ion-select formControlName="state" placeholder="Select">
-            <ion-option *ngFor="let state of states" [value]="state.id">{{state.name}}</ion-option>
+            <ion-option *ngFor="let state of states" [value]="state.name">{{state.name}}</ion-option>
           </ion-select>
         </ion-item>
 

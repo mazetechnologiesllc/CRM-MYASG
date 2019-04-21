@@ -115,14 +115,24 @@ export class JoinUsPage implements OnInit {
   ionViewDidLoad() {
     console.log('ionViewDidLoad JoinUsPage');
     let params = this.navParams.data;
-    if (params.id) {
+    if (params.userType) {
       this.url = '/lead.php';
-      this.signUpModel.services = [Number(params.id)]
+      this.personalInfoForm.controls['userType'].setValue(params.userType);
+      this.personalInfoForm.controls['country'].setValue('231');
+      this.paymentInfoForm.controls['country'].setValue('231');
+      this.personalInfoForm.controls['userType'].disable()
       this.signUpModel.userType = 6;
-      this.personalInfoForm.controls['services'].setValue(params.id);
-      this.personalInfoForm.controls['userType'].setValue('client');
+
+      if(params.service){
+        this.signUpModel.services = [Number(params.service.id)]
+        this.personalInfoForm.controls['services'].setValue(params.service.id);  
+        this.calculateJoiningFee(params.userType,params.service.service_price!==null ? Number(params.service.service_price):0)
+      }else{
+        this.calculateJoiningFee(params.userType)
+      }     
+      
       this.onUserTypeChange();
-      this.calculateJoiningFee('client',params.service_price!==null ? Number(params.service_price):0)
+      
     }
   }
 

@@ -81,10 +81,11 @@
       },
       {
         "title": "Add Manager",
-        "pageName": "AddManagerPage",
-        "component": "AddManagerPage",
+        "pageName": "JoinUsPage",
+        "component": "JoinUsPage",
         "icon": "person-add",
         "color": "appDark",
+        "type":"manager",
         "iconColor": "appSuccess"
       }
     ]
@@ -106,10 +107,11 @@
       },
       {
         "title": "Add Affiliates",
-        "pageName": "AddAffiliatePage",
-        "component": "AddAffiliatePage",
-        "icon": "add",
+        "pageName": "JoinUsPage",
+        "component": "JoinUsPage",
+        "icon": "person-add",
         "color": "appDark",
+        "type":"affiliate",
         "iconColor": "appSuccess"
       }
     ]
@@ -127,6 +129,15 @@
       "component": "ListClientPage",
       "icon": "list",
       "color": "appDark",
+      "iconColor": "appSuccess"
+    },
+    {
+      "title": "Add Client",
+      "pageName": "JoinUsPage",
+      "component": "JoinUsPage",
+      "icon": "person-add",
+      "color": "appDark",
+      "type":"client",
       "iconColor": "appSuccess"
     }]
   },

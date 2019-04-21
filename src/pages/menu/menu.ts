@@ -29,6 +29,7 @@ export interface PageInterface {
   index?: number;
   icon: string;
   color: any;
+  type?:string;
   iconColor: any;
   subMenu?: PageInterface[];
 }
@@ -286,7 +287,7 @@ export class MenuPage implements OnInit {
 
   openPage(page: PageInterface, title: string) {
 
-    this.nav.push(page.pageName);
+    this.nav.push(page.pageName, {userType:page.type ? page.type:undefined});
 
     for (let p of this.pages) {
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, Platform } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 // Models
 import { AppUser } from '../../_models';
@@ -19,7 +19,8 @@ export class ProfilePage implements OnInit {
   profileForm: FormGroup;
 
   imageURL: string = '';
-
+  base64Image:any;
+  photos:any[] =[];
   loggedInUser: AppUser;
   edit: boolean = false;
   submitted: boolean = false;
@@ -33,7 +34,9 @@ export class ProfilePage implements OnInit {
     public formBuilder: FormBuilder,
     public authProvider: AuthenticationProvider,
     public localStorageProvider: LocalStorageProvider,
+    public actionsheetCtrl: ActionSheetController,
     public loadingProvider: LoadingProvider,
+    public platform: Platform,
     public camera: Camera
   ) {
     this.loggedInUser = this.localStorageProvider.getLoggedInUser();
@@ -53,12 +56,13 @@ export class ProfilePage implements OnInit {
       address: [this.loggedInUser.address, Validators.required],
       city: [this.loggedInUser.city, Validators.required],
       state: [this.loggedInUser.state, Validators.required],
+      country: [this.loggedInUser.country, Validators.required],
       zip: [this.loggedInUser.zip, Validators.required],
       fax: [this.loggedInUser.fax]
       //photo: ['']
     });
 
-    
+
     //this.disableProfileForm();
   }
 
@@ -72,9 +76,9 @@ export class ProfilePage implements OnInit {
     this.showFab = false;
   }
 
- scrollStop(event) {
+  scrollStop(event) {
     this.showFab = true;
- }
+  }
 
   takePhoto() {
     let options = {
@@ -95,6 +99,53 @@ export class ProfilePage implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  openeditprofile() {
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Option',
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Take photo',
+          role: 'destructive',
+          icon: !this.platform.is('ios') ? 'ios-camera-outline' : null,
+          handler: () => {
+            this.takePhoto();
+          }
+        },
+        {
+          text: 'Choose photo from Gallery',
+          icon: !this.platform.is('ios') ? 'ios-images-outline' : null,
+          handler: () => {
+            this.openGallery();
+          }
+        },
+      ]
+    });
+    actionSheet.present();
+  }
+
+
+  openGallery() {
+
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+      let cameraImageSelector = document.getElementById('camera-image');
+      cameraImageSelector.setAttribute('src', this.base64Image);
+    }, (err) => {
+      // Handle error
+    })
   }
 
   reset() {
@@ -182,7 +233,7 @@ export class ProfilePage implements OnInit {
     //       else {
     //         alert("There is some problem in registraion, please try again or contact us.");
     //       }
-          
+
     //       this.alertService.error(error._body);          
     //     }
     //   );

@@ -26,6 +26,6 @@ export class ServiceDetailsPage {
 
   //Open payment page to parchase service
   openPayment(){
-    this.navCtrl.push('JoinUsPage', this.service)
+    this.navCtrl.push('JoinUsPage', {userType:'client', service:this.service})
   }
 }
